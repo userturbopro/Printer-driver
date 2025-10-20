@@ -132,3 +132,59 @@ for (let i = 1; i <= 10; i++) {
     console.log('нечётное число');
   }
 }
+
+// 14: Сколько стоит печать?
+// Расход краски
+// Для решения этой задачи будем использовать накопление значений в цикле.
+// Заведём внешнюю переменную, куда будем добавлять 70 мг (расход на одну страницу) при печати каждой страницы документа.
+// После переменной totalPages объявите переменную consumptionTotal равную 0
+// После неё создайте переменную consumptionPerPage. Она равна 70
+// Внутри цикла, после команды console.log, увеличьте значение переменной consumptionTotal на consumptionPerPage с помощью оператора +=
+// Ниже, в цикле, выведите значение consumptionTotal в консоль.
+
+let consumptionTotal = 0; // Общий расход тонера
+let consumptionPerPage = 70; // Расход краски на одну страницу
+for (let page = 1; page <= totalPages; page++) {
+  console.log('Печать страницы ' + page);
+  consumptionTotal += consumptionPerPage;
+  console.log(consumptionTotal);
+}
+
+// 15: Экономичная печать
+// первые три страницы печатаем как обычно,
+// а на оставшихся экономим тонер во все тяжкие (то есть используем в ДВА раза меньше тонера)!
+// Теперь нам нужно не просто увеличивать значение consumptionTotal при каждой итерации на 70,
+// но и проверять в каком режиме печати мы находимся (экономичном или обычном) и какую по счёту страницу документа печатаем. Тут пригодятся условия.
+// После переменной consumptionPerPage создайте переменную economyMode, которая содержит false
+// В цикле после keks.print добавьте условие, которое срабатывает, если economyMode равен true и номер текущей страницы page больше 3
+// Внутри этого условия увеличивайте consumptionTotal на consumptionPerPage * 0.5 с помощью оператора +=
+
+let economyMode = false;
+
+for (let page = 1; page <= totalPages; page++) {
+  console.log('Печать страницы ' + page);
+  if (economyMode && page > 3) {
+    consumptionTotal += consumptionPerPage * 0.5
+  }
+  consumptionTotal += consumptionPerPage;
+  console.log(consumptionTotal);
+}
+
+// 16: Экономим краску
+// Получается, если включён экономичный режим и номер страницы больше трёх,
+// мы тратим половину краски от обычного режима на одну страницу. А потом, неважно,
+// сработает условие или нет, мы обязательно увеличиваем расход ещё consumptionTotal += consumptionPerPage;.
+// Получается не экономия, а сплошные расходы. Добавим ветку else к условию и перенесём туда строку consumptionTotal += consumptionPerPage;.
+// Затем включим режим экономии тонера и проверим, что всё работает правильно.
+// Добавьте ветку else и перенесите туда consumptionTotal += consumptionPerPage;.
+// Поменяйте значение economyMode на true
+
+for (let page = 1; page <= totalPages; page++) {
+  console.log('Печать страницы ' + page);
+  if (economyMode && page > 3) {
+    consumptionTotal += consumptionPerPage * 0.5;
+  } else {
+    consumptionTotal += consumptionPerPage;
+  }
+  console.log(consumptionTotal);
+}
