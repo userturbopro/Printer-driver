@@ -188,5 +188,3 @@ for (let page = 1; page <= totalPages; page++) {
   }
   console.log(consumptionTotal);
 }
-
-// the end
